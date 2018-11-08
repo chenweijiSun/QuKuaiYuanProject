@@ -1,0 +1,72 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
+    defaultConfig {
+        applicationId "com.nfc.qukuaiyuan"
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+
+        javaCompileOptions {
+            // 显式声明支持注解
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    //Rxjava
+    implementation 'io.reactivex:rxandroid:1.1.0'
+    implementation 'io.reactivex:rxjava:1.1.0'
+    //网络请求库
+    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.3.0'
+    //view快速注解工具
+    implementation 'com.jakewharton:butterknife:7.0.1'
+    //图片加载工具
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    //系统状态栏工具类
+    implementation 'com.github.niorgai:StatusBarCompat:1.1.0'
+    //常用的工具(https://github.com/Blankj/AndroidUtilCode)
+    implementation 'com.blankj:utilcode:1.1.5'
+    implementation 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0'
+    //二维码库
+    implementation 'me.dm7.barcodescanner:zxing:1.9.8'
+    //log工具
+    implementation 'com.github.zhaokaiqiang.klog:library:1.5.0'
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="theme_color">#FB984A</color>
+    <color name="home_notice_background_color">#2c63db</color>
+    <color name="colorAccent">#ffffff</color>
+
+    <color name="title_toolbar_color">#ffffff</color>
+
+    <color name="white">#ffffff</color>
+
+    <color name="translucent_background">#80000000</color>
+    <color name="red">#e51c23</color>
+
+    <color name="classification_color">#FFF6E4</color>
+    <color name="transparent">#00000000</color>
+    <color name="translucent">#66000000</color>
+    <color name="home_background_color">#F3F5F9</color>
+    <color name="westore_bg_gray">#E6E6E6</color>
+    <color name="westore_enable_false">#dbdbdb</color>
+    <color name="westore_line_bg">#dbdbdb</color>
+    <color name="westore_color_orange">#EF5421</color>
+    <color name="westore_text_dark">#333333</color>
+    <color name="westore_text_red">#ff425d</color>
+    <color name="westore_text_red_ef4641">#ef4641</color>
+    <color name="westore_text_hint">#adadad</color>
+    <color name="westore_text_dark_gray">#999999</color>
+    <color name="westore_text_dark_gray_light">#939393</color>
+    <color name="cc_text_dark">#ff7c7c7c</color>
+
+</resources>
