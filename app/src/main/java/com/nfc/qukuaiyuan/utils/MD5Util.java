@@ -18,7 +18,8 @@ public class MD5Util {
     }
 
     public static void main(String[] args) {
-        String md52 = getMD5("ky.com159{\"mobile\":\"15818180121\",\"password\":\"676556\",\"act\":\"user.user_login\",\"time\":1541508096000,\"appid\":798563,\"sessionkey\":765291}cky.com159");
+//        String md52 = getMD5("ky.com159{\"mobile\":\"15818180121\",\"password\":\"676556\",\"act\":\"user.user_login\",\"time\":1541508096000,\"appid\":798563,\"sessionkey\":765291}cky.com159");
+        String md52=getMD5("ky.com159{\"mobile\":\"15818180121\",\"password\":\"676556\",\"act\":\"user.user_login\",\"time\":1541508096000,\"appid\":798563,\"sessionkey\":765291}cky.com159");
         System.out.println(md52);
     }
 }

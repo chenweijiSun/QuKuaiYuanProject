@@ -153,8 +153,8 @@ public class RegisterActivity extends ToolBarActivity {
         showProgressDialog("请稍候...");
         JSONObject object=new JSONObject();
         object.put("act","user.get_mobile_code");
-        object.put("mobile",phone);
         object.put("appid", Constant.APP_ID);
+        object.put("mobile",phone);
         object.put("sessionkey",Constant.SESSION_KEY);
         object.put("time", System.currentTimeMillis());
         JUtils.Log("cwj",Constant.SECRET + object.toString() + Constant.SECRET);
