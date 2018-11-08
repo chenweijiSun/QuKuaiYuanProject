@@ -15,7 +15,7 @@ public class Constant {
     public static final boolean ISENCRYPTION=false;
     public static final int SUCCESS_CODE=200;
 
-    public static final String BASE_URL="http://admin.mxshkj.com/api/";
+    public static final String BASE_URL="http://fwsy.aibanmas.com/addapi/v1/";
     public static final String KEYSTR="1e4cf084878ace458430ba7b4fcb68f0";
     public static final String REQUEST_SOURCE="1";
     public static final int PAGE_COUNT=20;
@@ -45,4 +45,10 @@ public class Constant {
     public static final int REQUEST_IMAGE = 2;
     public static final int CROP_IMAGES = 3;
     public static final int PHOTO_COUNT = 3;
+
+
+    public static final int APP_ID=798563;
+    public static final int SESSION_KEY=765291;
+    public static final String SECRET="cky.com159";
+
 }

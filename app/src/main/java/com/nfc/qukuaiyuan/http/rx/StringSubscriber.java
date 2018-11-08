@@ -18,14 +18,14 @@ import rx.Subscriber;
 /**
  * Created by cwj on 16/9/5.
  */
-public class StringSubscriber<T> extends Subscriber<String> implements ProgressCancelListener{
+public class StringSubscriber extends Subscriber<String> implements ProgressCancelListener{
 
     public static int SUBSCRIBER_STATU_FAIL=10033;
     public static int SUBSCRIBER_STATU_CANCEL=10034;
     public static int SUBSCRIBER_STATU_COMPLETED=10035;
     private SubscriberOnNextListener mSubscriberOnNextListener;
 
-    public StringSubscriber(SubscriberOnNextListener<T> mSubscriberOnNextListener) {
+    public StringSubscriber(SubscriberOnNextListener<String> mSubscriberOnNextListener) {
         this.mSubscriberOnNextListener=mSubscriberOnNextListener;
     }
 
@@ -58,8 +58,9 @@ public class StringSubscriber<T> extends Subscriber<String> implements ProgressC
     public void onNext(String s) {
         try {
             JUtils.jsonLog("cwj_http",s);
-            Type type = new TypeToken<T>() {}.getType();
-            mSubscriberOnNextListener.onNext(GsonUtil.jsonStringToObject(s,type));
+//            Type type = new TypeToken<T>() {}.getType();
+//            mSubscriberOnNextListener.onNext(GsonUtil.jsonStringToObject(s,type));
+            mSubscriberOnNextListener.onNext(s);
         } catch (Exception e) {
             e.printStackTrace();
             mSubscriberOnNextListener.onStatus(SUBSCRIBER_STATU_FAIL,"请求异常");

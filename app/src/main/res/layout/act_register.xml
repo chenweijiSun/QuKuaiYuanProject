@@ -49,6 +49,7 @@
                 android:layout_marginTop="10dp">
 
                 <EditText
+                    android:id="@+id/et_phone"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/input_height"
                     android:layout_centerVertical="true"

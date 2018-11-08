@@ -21,8 +21,8 @@ public interface IDreamRetrofit {
      * 注册
      */
     @FormUrlEncoded
-    @POST("user/regUser.dm")
-    Observable<String> doRegister(@FieldMap Map<String, String> map);
+    @POST("/addapi/v1/")
+    Observable<String> doRegister(@FieldMap Map<String, Object> map);
 
 
 }

@@ -116,7 +116,7 @@ public class ScannerActivity extends ToolBarActivity implements ZXingScannerView
         HttpClient.getGankRetrofitInstance().doRegister(bean.getParams())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new StringSubscriber<String>(new SubscriberOnNextListener<String>() {
+                .subscribe(new StringSubscriber(new SubscriberOnNextListener<String>() {
                     @Override
                     public void onNext(String data) {
                         hideProgressDialog();
