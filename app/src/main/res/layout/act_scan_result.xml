@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:background="@color/white"
+              android:layout_height="match_parent">
+    <include layout="@layout/view_toolbar"/>
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#DEDEDE"/>
+            <ImageView
+                    android:src="@mipmap/result_bg"
+                    android:scaleType="centerCrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"/>
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="45dp"
+                      android:background="@color/theme_color"
+                      android:textSize="15sp"
+                      android:textColor="@color/westore_text_dark"
+                      android:text="验证结果"
+                      android:gravity="center"
+                      android:paddingLeft="15dp"
+                      android:drawableRight="@mipmap/zhankai"
+                      android:paddingRight="15dp"/>
+
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

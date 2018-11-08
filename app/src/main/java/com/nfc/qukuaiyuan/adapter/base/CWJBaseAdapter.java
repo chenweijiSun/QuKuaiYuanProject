@@ -29,10 +29,12 @@ public abstract class CWJBaseAdapter<E,T extends BaseHoler> extends BaseAdapter 
 	public int getCount() {
 		if(mDatas ==null){
 			return 0;
-		}else
+		}else {
 			return mDatas.size();
+		}
 	}
 
+	@Override
 	public E getItem(int position) {
 		return mDatas.get(position);
 	}
@@ -42,6 +44,7 @@ public abstract class CWJBaseAdapter<E,T extends BaseHoler> extends BaseAdapter 
 		return arg0;
 	}
 
+	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		T holder = null;
         E item = this.getItem(position);

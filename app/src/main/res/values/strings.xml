@@ -2,4 +2,5 @@
     <string name="app_name">区块源</string>
     <string name="cont_message">By continuing,you accept our Privacy Policy and Terms of Use</string>
     <string name="nfc_messgae">请将您的手机靠近商品包装上\n的NFC标签，读取验证信息</string>
+    <string name="about_us_message">本软件是深圳区块源科技有限\n公司开发的基于NFC手机商品信息防伪\n平台，本软件支持RFID电子标签防\n伪查询，二维码标签防伪查询。\n我司励志把区块源打造为中国\n权威的信息防伪查询平台</string>
 </resources>

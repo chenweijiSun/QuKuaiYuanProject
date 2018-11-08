@@ -45,7 +45,9 @@ public abstract class RecyBaseAdapter<T,M extends RecyHolder> extends Adapter<M>
     public T getItem(int position){
         if(data==null){
             return null;
-        }else return data.get(position);
+        }else {
+            return data.get(position);
+        }
     }
     public List<T> getData() {
         return data;
