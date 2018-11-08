@@ -6,6 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -58,6 +59,14 @@ public class GsonUtil {
         return t;
     }
 
+    public static <T> T jsonStringToObject(String jsonStr, Type typeOfT) {
+        try {
+            T result = gson.fromJson(jsonStr, typeOfT);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
     /**
      * 转成list

@@ -90,6 +90,12 @@
                 android:configChanges="orientation|keyboardHidden|screenSize|keyboard"
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
+
+        <activity
+            android:name=".ui.ScannerActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize|keyboard"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
     </application>
 
 </manifest>
