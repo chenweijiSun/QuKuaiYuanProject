@@ -15,7 +15,5 @@ public class LoginActivity extends ToolBarActivity {
     @Override
     protected void init() {
         initTitleAndCanBack("登录");
-
-
     }
 }

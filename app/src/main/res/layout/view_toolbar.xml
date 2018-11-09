@@ -14,7 +14,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbar_height"
-        android:background="#FB984A"
+        android:background="@color/theme_color"
         android:orientation="vertical"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:elevation="1dp">

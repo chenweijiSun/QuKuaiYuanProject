@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/home_background_color"
     android:orientation="vertical">
 
     <include layout="@layout/view_toolbar" />
@@ -20,22 +20,26 @@
 
         <TextView
             android:id="@+id/btn_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/about_us_bg"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_height="@dimen/input_height"
+            android:background="@drawable/shape_btn_bg"
+            android:textColor="@drawable/select_text_click"
             android:gravity="center"
             android:text="关于我们"
-            android:textColor="@color/theme_color"
             android:textSize="16sp" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_height="@dimen/input_height"
+            android:background="@drawable/shape_btn_bg"
+            android:textColor="@drawable/select_text_click"
             android:layout_marginTop="15dp"
-            android:background="@mipmap/about_us_bg"
             android:gravity="center"
             android:text="版本检测"
-            android:textColor="@color/theme_color"
             android:textSize="16sp" />
     </LinearLayout>
 

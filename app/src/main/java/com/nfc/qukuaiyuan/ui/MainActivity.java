@@ -11,6 +11,7 @@ import com.nfc.qukuaiyuan.base.ToolBarActivity;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import com.nfc.qukuaiyuan.ui.nfc.NFCTestActivity;
 
 public class MainActivity extends ToolBarActivity {
 
@@ -36,11 +37,13 @@ public class MainActivity extends ToolBarActivity {
         initTitle("MEGANFC");
     }
 
+    @Override
     @OnClick({R.id.iv_nfc, R.id.iv_erweima, R.id.iv_personal, R.id.iv_setting})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_nfc:
-                startActivity(new Intent(this, NFCActivity.class));
+                startActivity(new Intent(this, NFCTestActivity.class));
+//                startActivity(new Intent(this, NFCActivity.class));
                 break;
             case R.id.iv_erweima:
                 Intent intent = new Intent(this, ScannerActivity.class);

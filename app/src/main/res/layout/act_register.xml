@@ -62,13 +62,14 @@
                 <TextView
                     android:id="@+id/btn_sms"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:minWidth="120dp"
+                    android:layout_height="@dimen/input_height"
+                    android:background="@drawable/shape_btn_bg"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:background="@mipmap/btn_bg"
                     android:gravity="center"
                     android:text="发送验证码"
-                    android:textColor="@color/theme_color" />
+                    android:textColor="@drawable/select_text_click" />
             </RelativeLayout>
 
             <EditText
@@ -107,16 +108,18 @@
 
             <TextView
                 android:id="@+id/btn_register"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_above="@+id/bottom"
+                android:layout_marginLeft="@dimen/input_padding"
+                android:layout_marginRight="@dimen/input_padding"
+                android:layout_height="@dimen/input_height"
+                android:background="@drawable/shape_btn_bg"
+                android:textColor="@drawable/select_text_click"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="15dp"
-                android:background="@mipmap/btn_login_bg"
                 android:gravity="center"
                 android:text="注册"
-                android:textColor="@color/theme_color"
                 android:textSize="16sp" />
 
             <TextView

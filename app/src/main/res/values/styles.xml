@@ -94,4 +94,11 @@
     <style name="TabLayoutTextStyle">
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="MySwitchTheme">
+        <item name="colorControlActivated">@color/theme_color</item>
+        <item name="colorSwitchThumbNormal">#FFF1F1F1</item>
+        <item name="android:colorForeground">@color/theme_color</item>
+    </style>
+
 </resources>

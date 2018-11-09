@@ -1,13 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/westore_text_dark"
+              android:orientation="vertical">
 
-    <include layout="@layout/view_toolbar" />
+    <include layout="@layout/view_toolbar"/>
 
-    <me.dm7.barcodescanner.zxing.ZXingScannerView
-        android:id="@+id/scanner_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+
+        <me.dm7.barcodescanner.zxing.ZXingScannerView
+                android:id="@+id/scanner_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        <TextView
+                android:id="@+id/message"
+                android:textColor="@color/white"
+                android:text="请将二维码放在取景框内，系统将自动扫描"
+                android:textSize="14sp"
+                android:layout_above="@+id/ll_bottom"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <LinearLayout
+                android:id="@+id/ll_bottom"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:paddingRight="35dp"
+                android:paddingBottom="100dp"
+                android:layout_height="wrap_content">
+
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_marginRight="5dp"
+                       android:src="@mipmap/flash"/>
+
+            <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/btn_switch"
+                    android:theme="@style/MySwitchTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
 </LinearLayout>

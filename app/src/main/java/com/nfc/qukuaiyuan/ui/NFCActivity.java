@@ -11,6 +11,6 @@ public class NFCActivity extends ToolBarActivity {
 
     @Override
     protected void init() {
-
+        initTitleAndCanBack("NFC扫描");
     }
 }

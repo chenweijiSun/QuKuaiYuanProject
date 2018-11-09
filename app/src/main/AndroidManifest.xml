@@ -33,6 +33,9 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- 获取 UUID 用到 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.NFC" />
+    <!-- 要求当前设备必须要有NFC芯片 -->
+    <uses-feature android:name="android.hardware.nfc" android:required="true" />
 
     <application
         android:name=".base.BaseApplication"
@@ -65,6 +68,7 @@
             android:name=".ui.NFCActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|keyboard"
             android:screenOrientation="portrait"
+            android:launchMode="singleTop"
             android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
 
         <activity
@@ -97,6 +101,69 @@
             android:configChanges="orientation|keyboardHidden|screenSize|keyboard"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
+
+        <activity
+                android:name=".ui.nfc.NFCTestActivity"
+                android:configChanges="orientation|keyboardHidden|screenSize|keyboard"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
+
+        <activity
+                android:name=".ui.nfc.ReadMUActivity"
+                android:configChanges="orientation|keyboardHidden|screenSize|keyboard"
+                android:screenOrientation="portrait"
+                android:launchMode="singleTop"
+                android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
+
+        <activity
+                android:name=".ui.nfc.ReadTextActivity"
+                android:configChanges="orientation|keyboardHidden|screenSize|keyboard"
+                android:screenOrientation="portrait"
+                android:launchMode="singleTop"
+                android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
+
+        <activity
+                android:name=".ui.nfc.ReadUriActivity"
+                android:configChanges="orientation|keyboardHidden|screenSize|keyboard"
+                android:screenOrientation="portrait"
+                android:launchMode="singleTop"
+                android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
+
+        <activity
+                android:name=".ui.nfc.RunAppActivity"
+                android:configChanges="orientation|keyboardHidden|screenSize|keyboard"
+                android:screenOrientation="portrait"
+                android:launchMode="singleTop"
+                android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
+
+        <activity
+                android:name=".ui.nfc.RunUrlActivity"
+                android:configChanges="orientation|keyboardHidden|screenSize|keyboard"
+                android:screenOrientation="portrait"
+                android:launchMode="singleTop"
+                android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
+
+        <activity
+                android:name=".ui.nfc.WriteMUActivity"
+                android:configChanges="orientation|keyboardHidden|screenSize|keyboard"
+                android:screenOrientation="portrait"
+                android:launchMode="singleTop"
+                android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
+
+        <activity
+                android:name=".ui.nfc.WriteTextActivity"
+                android:configChanges="orientation|keyboardHidden|screenSize|keyboard"
+                android:screenOrientation="portrait"
+                android:launchMode="singleTop"
+                android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
+
+        <activity
+                android:name=".ui.nfc.WriteUriActivity"
+                android:configChanges="orientation|keyboardHidden|screenSize|keyboard"
+                android:screenOrientation="portrait"
+                android:launchMode="singleTop"
+                android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
+
     </application>
 
 </manifest>

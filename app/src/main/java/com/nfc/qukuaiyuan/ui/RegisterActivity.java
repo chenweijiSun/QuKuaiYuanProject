@@ -59,6 +59,7 @@ public class RegisterActivity extends ToolBarActivity {
         initTitleAndCanBack("注册");
     }
 
+    @Override
     @OnClick({R.id.btn_sms, R.id.btn_register})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -157,16 +158,12 @@ public class RegisterActivity extends ToolBarActivity {
         object.put("mobile",phone);
         object.put("sessionkey",Constant.SESSION_KEY);
         object.put("time", System.currentTimeMillis());
-        JUtils.Log("cwj",Constant.SECRET + object.toString() + Constant.SECRET);
         String sign = MD5Util.getMD5(Constant.SECRET + object.toString() + Constant.SECRET);
-        JUtils.Log("cwj",sign);
-
         object.put("sign",sign);
-
         OkhttpUtil.okHttpPostJson(Constant.BASE_URL, object.toString(), new CallBackUtil.CallBackString() {
             @Override
             public void onFailure(Call call, Exception e) {
-
+                hideProgressDialog();
             }
 
             @Override
