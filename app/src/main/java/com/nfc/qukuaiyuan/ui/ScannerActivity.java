@@ -1,6 +1,7 @@
 package com.nfc.qukuaiyuan.ui;
 
 import android.Manifest;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.SwitchCompat;
@@ -85,40 +86,9 @@ public class ScannerActivity extends ToolBarActivity implements ZXingScannerView
         mScannerView.resumeCameraPreview(this);
 
         String resultText = result.getText();
-        try {
-            JSONObject object = new JSONObject(resultText);
-            String bId = object.getString("bId");
-            String token = object.getString("token");
-            showProgressDialog();
-            scanOrder(bId, token);
-        } catch (JSONException e) {
-            showToast("解析异常");
-            finish();
-        }
-    }
-
-    public void scanOrder(String bId, String token) {
-        RequestBean bean = new RequestBean();
-        bean.addParams("bId", bId);
-        bean.addParams("token", token);
-        HttpClient.getGankRetrofitInstance().doRegister(bean.getParams())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new StringSubscriber(new SubscriberOnNextListener<String>() {
-                    @Override
-                    public void onNext(String data) {
-                        hideProgressDialog();
-
-                    }
-
-                    @Override
-                    public void onStatus(int status, String message) {
-                        if (status == StringSubscriber.SUBSCRIBER_STATU_FAIL) {
-                            showToast(message);
-                        }
-                    }
-                }));
-
+        Intent intent = new Intent(this, ScanResultActivity.class);
+        intent.putExtra("code",resultText);
+        startActivity(intent);
     }
 
 }

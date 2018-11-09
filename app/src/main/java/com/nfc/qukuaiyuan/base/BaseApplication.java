@@ -77,18 +77,17 @@ public class BaseApplication extends Application {
         this.userInfo=info;
         if(info!=null){
             SPUtils sharedPreference = JUtils.getSharedPreference();
-            sharedPreference.putInt(Constant.LOGIN_USERID_CACHE,info.getId());
-            sharedPreference.putString(Constant.LOGIN_USER_TOKEN,info.getToken());
-            sharedPreference.putString(Constant.LOGIN_USERNAME_CACHE,info.getAccount());
+            sharedPreference.putString(Constant.LOGIN_USERID_CACHE,info.getUser_id());
+            sharedPreference.putString(Constant.LOGIN_USERNAME_CACHE,info.getMobile());
         }
     }
 
-    public Integer getUserId(){
+    public String getUserId(){
         if(userInfo!=null){
-            return userInfo.getId();
+            return userInfo.getUser_id();
         }else{
             SPUtils sharedPreference = JUtils.getSharedPreference();
-            return sharedPreference.getInt(Constant.LOGIN_USERID_CACHE,-1);
+            return sharedPreference.getString(Constant.LOGIN_USERID_CACHE,null);
         }
     }
 
@@ -98,12 +97,8 @@ public class BaseApplication extends Application {
     }
 
     public String getUserToken(){
-        if(userInfo!=null){
-            return userInfo.getToken();
-        }else{
-            SPUtils sharedPreference = JUtils.getSharedPreference();
-            return sharedPreference.getString(Constant.LOGIN_USER_TOKEN,null);
-        }
+        SPUtils sharedPreference = JUtils.getSharedPreference();
+        return sharedPreference.getString(Constant.LOGIN_USER_TOKEN,null);
     }
 
     public void logout(){
@@ -111,5 +106,9 @@ public class BaseApplication extends Application {
         sharedPreference.clear();
         sharedPreference.putBoolean(Constant.FIRST_LAUNCH,true);
         userInfo=null;
+    }
+
+    public void saveToken(String token) {
+        JUtils.getSharedPreference().putString(Constant.LOGIN_USER_TOKEN,token);
     }
 }

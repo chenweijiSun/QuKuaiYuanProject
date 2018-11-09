@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.blankj.utilcode.utils.RegularUtils;
+import com.nfc.qukuaiyuan.BuildConfig;
 import com.nfc.qukuaiyuan.Constant;
 import com.nfc.qukuaiyuan.R;
 import com.nfc.qukuaiyuan.base.ToolBarActivity;
@@ -18,6 +19,8 @@ import com.nfc.qukuaiyuan.http.okhttp.CallBackUtil;
 import com.nfc.qukuaiyuan.http.okhttp.OkhttpUtil;
 import com.nfc.qukuaiyuan.http.rx.StringSubscriber;
 import com.nfc.qukuaiyuan.http.rx.SubscriberOnNextListener;
+import com.nfc.qukuaiyuan.model.entity.UserInfo;
+import com.nfc.qukuaiyuan.utils.GsonUtil;
 import com.nfc.qukuaiyuan.utils.MD5Util;
 import com.nfc.qukuaiyuan.utils.StringUtils;
 import com.nfc.qukuaiyuan.utils.jutils.JUtils;
@@ -49,6 +52,8 @@ public class RegisterActivity extends ToolBarActivity {
     @Bind(R.id.bottom)
     TextView bottom;
 
+    private String vCode;
+
     @Override
     protected int getLayoutResId() {
         return R.layout.act_register;
@@ -71,6 +76,11 @@ public class RegisterActivity extends ToolBarActivity {
                 }
                 break;
             case R.id.btn_register:
+                try {
+                    register();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 break;
         }
     }
@@ -103,6 +113,10 @@ public class RegisterActivity extends ToolBarActivity {
             showToast("密码不能为空");
             return;
         }
+        if(pwd.length()<6){
+            showToast("密码长度不符");
+            return;
+        }
         if (TextUtils.isEmpty(pwdSure)) {
             showToast("确认密码不能为空");
             return;
@@ -115,31 +129,38 @@ public class RegisterActivity extends ToolBarActivity {
         showProgressDialog("请稍候...");
         JSONObject object=new JSONObject();
         object.put("act","user.add_app_user");
-        object.put("name",name);
+        object.put("appid", Constant.APP_ID);
+        object.put("code",code);
         object.put("mobile",phone);
+        object.put("name",name);
         object.put("password",pwd);
         object.put("re_password",pwdSure);
-        object.put("code",code);
+        object.put("sessionkey",Constant.SESSION_KEY);
+        object.put("time", System.currentTimeMillis());
         String sign = MD5Util.getMD5(Constant.SECRET + object.toString() + Constant.SECRET);
-        RequestBean bean=new RequestBean();
-        bean.addParams("sign",sign);
-        HttpClient.getGankRetrofitInstance().doRegister(bean.getParams())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new StringSubscriber(new SubscriberOnNextListener<String>() {
-                    @Override
-                    public void onNext(String data) {
-                        hideProgressDialog();
-                        showToast(data);
-                    }
+        object.put("sign",sign);
+        OkhttpUtil.okHttpPostJson(Constant.BASE_URL, object.toString(), new CallBackUtil.CallBackString() {
+            @Override
+            public void onFailure(Call call, Exception e) {
+                hideProgressDialog();
+                showToast("注册失败");
+            }
 
-                    @Override
-                    public void onStatus(int status, String message) {
-                        if(status==StringSubscriber.SUBSCRIBER_STATU_FAIL){
-                            showToast(message);
-                        }
-                    }
-                }));
+            @Override
+            public void onResponse(String response) {
+                hideProgressDialog();
+                JUtils.Log("cwj",response);
+                boolean result = checkSuccessReturnBoolean(response);
+                if(result){
+                    JUtils.getSharedPreference().putString(Constant.LOGIN_USERNAME_CACHE,phone);
+                    showToast("注册成功");
+                    finish();
+                }else{
+                    showToast("注册失败");
+                }
+            }
+        });
+
 
     }
 
@@ -150,7 +171,7 @@ public class RegisterActivity extends ToolBarActivity {
             showToast("手机号不能为空");
             return;
         }
-
+        vCode=null;
         showProgressDialog("请稍候...");
         JSONObject object=new JSONObject();
         object.put("act","user.get_mobile_code");
@@ -164,17 +185,31 @@ public class RegisterActivity extends ToolBarActivity {
             @Override
             public void onFailure(Call call, Exception e) {
                 hideProgressDialog();
+                showToast("发送验证码失败");
             }
 
             @Override
             public void onResponse(String response) {
                 hideProgressDialog();
-                showToast(response);
-                onSendSucc();
+                JUtils.Log("cwj",response);
+                JSONObject jsonObject=checkSuccessReturnJson(response);
+                try {
+                    if(jsonObject!=null){
+                        vCode=jsonObject.getString("code");
+                        if(BuildConfig.DEBUG){
+                            etCode.setText(vCode);
+                        }
+                        onSendSucc();
+                    }else{
+                        showToast("发送验证码失败");
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    showToast("发送验证码失败");
+                }
             }
         });
-
-
     }
 
     private void onSendSucc(){

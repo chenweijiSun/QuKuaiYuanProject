@@ -7,31 +7,41 @@ import java.math.BigDecimal;
 public class UserInfo implements Serializable {
 
 
-    private Integer id;
-    private String account;
-    private String token;
+    private static final long serialVersionUID = 1633721944009608297L;
+    private String user_id;
+    private String mobile;
+    private String name;
+    private String time;
 
-    public Integer getId() {
-        return id;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
-    public String getAccount() {
-        return account;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setAccount(String account) {
-        this.account = account;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
-    public String getToken() {
-        return token;
+    public String getName() {
+        return name;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

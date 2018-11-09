@@ -17,13 +17,23 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.nfc.qukuaiyuan.BuildConfig;
+import com.nfc.qukuaiyuan.Constant;
 import com.nfc.qukuaiyuan.R;
+import com.nfc.qukuaiyuan.http.okhttp.CallBackUtil;
+import com.nfc.qukuaiyuan.http.okhttp.OkhttpUtil;
+import com.nfc.qukuaiyuan.model.entity.UserInfo;
+import com.nfc.qukuaiyuan.utils.GsonUtil;
+import com.nfc.qukuaiyuan.utils.MD5Util;
 import com.nfc.qukuaiyuan.utils.StringUtils;
+import com.nfc.qukuaiyuan.utils.jutils.JUtils;
 import com.nfc.qukuaiyuan.widget.dialog.CommonDialogFragment;
 import com.nfc.qukuaiyuan.widget.dialog.DialogFragmentHelper;
 
 
 import butterknife.ButterKnife;
+import okhttp3.Call;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by xybcoder on 2016/3/1.
@@ -214,5 +224,60 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         }
         Glide.get(this).trimMemory(level);
     }
+
+    protected String checkSuccess(String response){
+        try {
+            JSONObject jsonObject=new JSONObject(response);
+            if(jsonObject.getInt("code")==0){
+                return jsonObject.getString("result");
+            }else{
+                return jsonObject.optString("msg");
+            }
+        } catch (JSONException e) {
+        }
+        return null;
+    }
+
+    protected boolean checkSuccessReturnBoolean(String response){
+        try {
+            JSONObject jsonObject=new JSONObject(response);
+            if(jsonObject.getInt("code")==0){
+                return true;
+            }
+        } catch (JSONException e) {
+        }
+        return false;
+    }
+
+
+    protected String checkUserSuccess(String response){
+        try {
+            JSONObject jsonObject=new JSONObject(response);
+            if(jsonObject.getInt("code")==0){
+
+                JSONObject result = jsonObject.getJSONObject("result");
+                String token = result.getString("token");
+                BaseApplication.getInstance().saveToken(token);
+                return result.getString("user");
+            }else{
+                return jsonObject.optString("msg");
+            }
+        } catch (JSONException e) {
+        }
+        return null;
+    }
+
+
+    protected JSONObject checkSuccessReturnJson(String response){
+        try {
+            JSONObject jsonObject=new JSONObject(response);
+            if(jsonObject.getInt("code")==0){
+                return jsonObject.getJSONObject("result");
+            }
+        } catch (JSONException e) {
+        }
+        return null;
+    }
+
 
 }

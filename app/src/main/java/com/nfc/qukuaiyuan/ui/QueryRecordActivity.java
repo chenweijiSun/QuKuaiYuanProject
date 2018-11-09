@@ -22,9 +22,18 @@
  */
 package com.nfc.qukuaiyuan.ui;
 
+import com.nfc.qukuaiyuan.Constant;
 import com.nfc.qukuaiyuan.R;
 import com.nfc.qukuaiyuan.adapter.QueryRecordAdapter;
+import com.nfc.qukuaiyuan.base.BaseApplication;
 import com.nfc.qukuaiyuan.base.ToolBarActivity;
+import com.nfc.qukuaiyuan.http.okhttp.CallBackUtil;
+import com.nfc.qukuaiyuan.http.okhttp.OkhttpUtil;
+import com.nfc.qukuaiyuan.utils.MD5Util;
+import com.nfc.qukuaiyuan.utils.jutils.JUtils;
+import okhttp3.Call;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
@@ -43,5 +52,34 @@ public class QueryRecordActivity extends ToolBarActivity {
     @Override
     protected void init() {
         initTitleAndCanBack("查询记录");
+    }
+
+    private void doQuery(String code,String uid) throws JSONException {
+        showProgressDialog("请稍候...");
+        JSONObject object=new JSONObject();
+        object.put("act","nfc.user_select");
+        object.put("appid", Constant.APP_ID);
+        object.put("code",code);
+        object.put("sessionkey",Constant.SESSION_KEY);
+        object.put("time", System.currentTimeMillis());
+        object.put("token", BaseApplication.getInstance().getUserToken());
+        object.put("uid",uid);
+        String sign = MD5Util.getMD5(Constant.SECRET + object.toString() + Constant.SECRET);
+        object.put("sign",sign);
+        JUtils.Log("cwj",object.toString());
+        OkhttpUtil.okHttpPostJson(Constant.BASE_URL, object.toString(), new CallBackUtil.CallBackString() {
+            @Override
+            public void onFailure(Call call, Exception e) {
+                hideProgressDialog();
+                showToast("查询失败");
+            }
+
+            @Override
+            public void onResponse(String response) {
+                hideProgressDialog();
+                String result = checkSuccess(response);
+                JUtils.Log("cwj",result);
+            }
+        });
     }
 }

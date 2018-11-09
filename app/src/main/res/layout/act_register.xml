@@ -62,7 +62,7 @@
                 <TextView
                     android:id="@+id/btn_sms"
                     android:layout_width="wrap_content"
-                    android:minWidth="120dp"
+                    android:minWidth="130dp"
                     android:layout_height="@dimen/input_height"
                     android:background="@drawable/shape_btn_bg"
                     android:layout_alignParentRight="true"
@@ -93,7 +93,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/white"
                 android:gravity="center"
-                android:hint="PASSOWRD" />
+                android:hint="密码（6-10位）" />
 
             <EditText
                 android:id="@+id/et_passowrd_sure"
@@ -104,7 +104,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/white"
                 android:gravity="center"
-                android:hint="CONFIRM PASSOWRD" />
+                android:hint="重复密码（6-10位）" />
 
             <TextView
                 android:id="@+id/btn_register"
