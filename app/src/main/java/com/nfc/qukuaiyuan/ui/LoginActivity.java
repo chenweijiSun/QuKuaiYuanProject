@@ -117,8 +117,6 @@ public class LoginActivity extends ToolBarActivity {
                     JUtils.getSharedPreference().putString(Constant.LOGIN_PAWSSWORD_CACHE,pwd);
                     showToast("登录成功");
                     finish();
-                }else{
-                    showToast("登录失败");
                 }
             }
         });

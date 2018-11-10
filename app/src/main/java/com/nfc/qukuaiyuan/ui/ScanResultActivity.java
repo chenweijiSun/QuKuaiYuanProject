@@ -108,8 +108,12 @@ public class ScanResultActivity extends ToolBarActivity {
                 hideProgressDialog();
                 JUtils.Log("cwj", response);
                 JSONObject result = checkSuccessReturnJson(response);
-                String url = result.optString("url");
-                webView.loadUrl(url);
+                if(result!=null){
+                    String url = result.optString("url");
+                    webView.loadUrl(url);
+                }else {
+                    showToast("加载失败，请重试");
+                }
             }
         });
     }

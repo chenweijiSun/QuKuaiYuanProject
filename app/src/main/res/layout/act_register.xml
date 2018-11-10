@@ -9,8 +9,9 @@
 
     <View
         android:layout_width="match_parent"
-        android:background="#DEDEDE"
-        android:layout_height="1dp"/>
+        android:layout_height="1dp"
+        android:background="#DEDEDE" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,8 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
-            android:paddingTop="8dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="8dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -62,12 +63,12 @@
                 <TextView
                     android:id="@+id/btn_sms"
                     android:layout_width="wrap_content"
-                    android:minWidth="130dp"
                     android:layout_height="@dimen/input_height"
-                    android:background="@drawable/shape_btn_bg"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:background="@drawable/shape_btn_bg"
                     android:gravity="center"
+                    android:minWidth="130dp"
                     android:text="发送验证码"
                     android:textColor="@drawable/select_text_click" />
             </RelativeLayout>
@@ -93,7 +94,8 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/white"
                 android:gravity="center"
-                android:hint="密码（6-10位）" />
+                android:hint="密码（6-10位）"
+                android:inputType="textPassword" />
 
             <EditText
                 android:id="@+id/et_passowrd_sure"
@@ -104,22 +106,23 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/white"
                 android:gravity="center"
-                android:hint="重复密码（6-10位）" />
+                android:hint="重复密码（6-10位）"
+                android:inputType="textPassword" />
 
             <TextView
                 android:id="@+id/btn_register"
                 android:layout_width="match_parent"
-                android:layout_above="@+id/bottom"
-                android:layout_marginLeft="@dimen/input_padding"
-                android:layout_marginRight="@dimen/input_padding"
                 android:layout_height="@dimen/input_height"
-                android:background="@drawable/shape_btn_bg"
-                android:textColor="@drawable/select_text_click"
+                android:layout_above="@+id/bottom"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="20dp"
+                android:layout_marginLeft="@dimen/input_padding"
+                android:layout_marginRight="@dimen/input_padding"
                 android:layout_marginTop="15dp"
+                android:background="@drawable/shape_btn_bg"
                 android:gravity="center"
                 android:text="注册"
+                android:textColor="@drawable/select_text_click"
                 android:textSize="16sp" />
 
             <TextView

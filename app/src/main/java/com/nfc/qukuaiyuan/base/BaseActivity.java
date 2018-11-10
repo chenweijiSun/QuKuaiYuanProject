@@ -231,7 +231,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
             if(jsonObject.getInt("code")==0){
                 return jsonObject.getString("result");
             }else{
-                return jsonObject.optString("msg");
+                String msg = jsonObject.optString("msg");
+                showToast(msg);
             }
         } catch (JSONException e) {
         }
@@ -243,6 +244,9 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
             JSONObject jsonObject=new JSONObject(response);
             if(jsonObject.getInt("code")==0){
                 return true;
+            }else{
+                String msg = jsonObject.optString("msg");
+                showToast(msg);
             }
         } catch (JSONException e) {
         }
@@ -260,7 +264,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
                 BaseApplication.getInstance().saveToken(token);
                 return result.getString("user");
             }else{
-                return jsonObject.optString("msg");
+                String msg = jsonObject.optString("msg");
+                showToast(msg);
             }
         } catch (JSONException e) {
         }
@@ -273,6 +278,9 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
             JSONObject jsonObject=new JSONObject(response);
             if(jsonObject.getInt("code")==0){
                 return jsonObject.getJSONObject("result");
+            }else{
+                String msg = jsonObject.optString("msg");
+                showToast(msg);
             }
         } catch (JSONException e) {
         }

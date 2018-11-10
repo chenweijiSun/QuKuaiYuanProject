@@ -53,8 +53,8 @@ public class MainActivity extends ToolBarActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_nfc:
-                startActivity(new Intent(this, NFCTestActivity.class));
-//                startActivity(new Intent(this, NFCActivity.class));
+//                startActivity(new Intent(this, NFCTestActivity.class));
+                startActivity(new Intent(this, NFCActivity.class));
                 break;
             case R.id.iv_erweima:
                 Intent intent = new Intent(this, ScannerActivity.class);

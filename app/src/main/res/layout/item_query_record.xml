@@ -1,39 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="horizontal"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="1"
+    android:orientation="horizontal">
 
     <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text=""
-            android:textColor="@color/westore_text_dark"/>
+        android:id="@+id/tv_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.4"
+        android:padding="5dp"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@color/westore_text_dark"
+        android:textSize="14sp" />
 
-    <View android:layout_width="0.8dp"
-          android:layout_height="match_parent"
-          android:background="@color/westore_text_dark"/>
-    <TextView
-            android:id="@+id/tv_date"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text=""
-            android:textColor="@color/westore_text_dark"/>
-
-    <View android:layout_width="0.8dp"
-          android:layout_height="match_parent"
-          android:background="@color/westore_text_dark"/>
+    <View
+        android:layout_width="0.8dp"
+        android:layout_height="match_parent"
+        android:background="@color/westore_line_bg" />
 
     <TextView
-            android:id="@+id/tv_real"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text=""
-            android:textColor="@color/westore_text_dark"/>
+        android:id="@+id/tv_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.4"
+        android:text=""
+        android:gravity="center"
+        android:padding="5dp"
+        android:textSize="14sp"
+        android:textColor="@color/westore_text_dark" />
+
+    <View
+        android:layout_width="0.8dp"
+        android:layout_height="match_parent"
+        android:background="@color/westore_line_bg" />
+
+    <TextView
+        android:id="@+id/tv_real"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:padding="5dp"
+        android:gravity="center"
+        android:text=""
+        android:textSize="14sp"
+        android:textColor="@color/westore_text_dark" />
 
 
 </LinearLayout>

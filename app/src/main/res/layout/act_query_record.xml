@@ -1,80 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:background="@color/white"
-              android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
 
 
-    <include layout="@layout/view_toolbar"/>
+    <include layout="@layout/view_toolbar" />
+
     <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#DEDEDE"/>
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#DEDEDE" />
 
-    <LinearLayout android:layout_width="match_parent"
-                  android:orientation="horizontal"
-                  android:gravity="center"
-                  android:paddingTop="@dimen/padding_10dp"
-                  android:paddingBottom="@dimen/padding_10dp"
-                  android:layout_height="wrap_content">
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@mipmap/btn_bg"
-                android:gravity="center"
-                android:text="NFC"
-                android:textColor="@color/theme_color"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/padding_10dp"
+        android:paddingTop="@dimen/padding_10dp">
 
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@mipmap/btn_bg"
-                android:gravity="center"
-                android:text="二维码"
-                android:textColor="@color/theme_color"/>
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/input_height"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/shape_btn_bg"
+            android:gravity="center"
+            android:minWidth="110dp"
+            android:text="NFC"
+            android:textColor="@color/theme_color" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/input_height"
+            android:layout_marginLeft="2dp"
+            android:background="@drawable/shape_btn_bg"
+            android:gravity="center"
+            android:minWidth="110dp"
+            android:text="二维码"
+            android:textColor="@color/theme_color" />
+
     </LinearLayout>
 
-    <LinearLayout android:layout_width="match_parent"
-                  android:orientation="horizontal"
-                  android:gravity="center"
-                  android:paddingTop="@dimen/padding_10dp"
-                  android:paddingBottom="@dimen/padding_10dp"
-                  android:layout_height="wrap_content">
-        <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="产品名称"
-                android:textColor="@color/westore_text_dark"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/westore_line_bg" />
 
-        <View android:layout_width="0.8dp"
-              android:layout_height="20dp"
-              android:background="@color/westore_text_dark"/>
-        <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="验证日期"
-                android:textColor="@color/westore_text_dark"/>
-
-        <View android:layout_width="0.8dp"
-              android:layout_height="20dp"
-              android:background="@color/westore_text_dark"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:gravity="center"
+        android:weightSum="1"
+        android:orientation="horizontal">
 
         <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="真伪"
-                android:textColor="@color/westore_text_dark"/>
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:gravity="center"
+            android:text="产品名称"
+            android:textSize="15sp"
+            android:textColor="@color/westore_text_dark" />
+
+        <View
+            android:layout_width="0.8dp"
+            android:layout_height="match_parent"
+            android:background="@color/westore_line_bg" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:gravity="center"
+            android:text="验证日期"
+            android:textSize="15sp"
+            android:textColor="@color/westore_text_dark" />
+
+        <View
+            android:layout_width="0.8dp"
+            android:layout_height="match_parent"
+            android:background="@color/westore_line_bg" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:text="真伪"
+            android:textSize="15sp"
+            android:textColor="@color/westore_text_dark" />
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/westore_line_bg" />
+
+    <com.baoyz.widget.PullRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
+
+    </com.baoyz.widget.PullRefreshLayout>
+
+
 </LinearLayout>

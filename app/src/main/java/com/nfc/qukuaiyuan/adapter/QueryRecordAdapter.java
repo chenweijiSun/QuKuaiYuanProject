@@ -24,17 +24,22 @@ package com.nfc.qukuaiyuan.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+
+import com.blankj.utilcode.utils.TimeUtils;
 import com.nfc.qukuaiyuan.R;
 import com.nfc.qukuaiyuan.adapter.base.RecyBaseAdapter;
 import com.nfc.qukuaiyuan.adapter.base.RecyHolder;
 import com.nfc.qukuaiyuan.adapter.base.RecyItemClickListener;
 import com.nfc.qukuaiyuan.model.entity.QueryRecordInfo;
+
+import java.text.SimpleDateFormat;
 
 /**
  * @author chenweiji
@@ -48,13 +53,18 @@ public class QueryRecordAdapter extends RecyBaseAdapter<QueryRecordInfo, QueryRe
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_query_record, null, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_query_record, parent, false);
         return new ViewHolder(view,itemClickListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+        QueryRecordInfo item = getItem(position);
+        holder.tvName.setText(item.getGoods_name());
+        if(!TextUtils.isEmpty(item.getTime())){
+            holder.tvDate.setText(TimeUtils.milliseconds2String(Long.parseLong(item.getTime()),TimeUtils.DEFAULT_SDF));
+        }
+        holder.tvReal.setText(item.getFact());
     }
 
     static class ViewHolder extends RecyHolder{

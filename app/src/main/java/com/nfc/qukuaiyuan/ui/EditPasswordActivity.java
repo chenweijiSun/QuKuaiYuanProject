@@ -19,6 +19,8 @@ import com.nfc.qukuaiyuan.base.ToolBarActivity;
 import com.nfc.qukuaiyuan.http.okhttp.CallBackUtil;
 import com.nfc.qukuaiyuan.http.okhttp.OkhttpUtil;
 import com.nfc.qukuaiyuan.utils.MD5Util;
+import com.nfc.qukuaiyuan.utils.jutils.JUtils;
+
 import okhttp3.Call;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -97,14 +99,14 @@ public class EditPasswordActivity extends ToolBarActivity {
         JSONObject object=new JSONObject();
         object.put("act","user.update_pw");
         object.put("appid", Constant.APP_ID);
+        object.put("code",code);
         object.put("mobile",phone);
         object.put("new_password",pwd);
-        object.put("ocde",code);
         object.put("re_new_password",pwdSure);
         object.put("sessionkey",Constant.SESSION_KEY);
         String sign = MD5Util.getMD5(Constant.SECRET + object.toString() + Constant.SECRET);
         object.put("sign",sign);
-
+        JUtils.Log("cwj",object.toString());
         OkhttpUtil.okHttpPostJson(Constant.BASE_URL, object.toString(), new CallBackUtil.CallBackString() {
             @Override
             public void onFailure(Call call, Exception e) {
@@ -115,11 +117,10 @@ public class EditPasswordActivity extends ToolBarActivity {
             @Override
             public void onResponse(String response) {
                 hideProgressDialog();
+                JUtils.Log("cwj",response);
                 if(checkSuccessReturnBoolean(response)){
                     showToast("修改密码成功");
                     finish();
-                }else{
-                    showToast("修改密码失败");
                 }
             }
         });

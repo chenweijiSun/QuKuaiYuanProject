@@ -25,10 +25,38 @@ package com.nfc.qukuaiyuan.model.entity;
 import java.io.Serializable;
 
 /**
- *
  * @author chenweiji
  * @version Id: QueryRecordInfo.java, v 0.1 2018/11/8 16:20 chenweiji Exp $$
  */
 public class QueryRecordInfo implements Serializable {
     private static final long serialVersionUID = -1310454138494861783L;
+
+    private String goods_name;
+    private String time;
+
+    private String fact;
+
+    public String getFact() {
+        return fact;
+    }
+
+    public void setFact(String fact) {
+        this.fact = fact;
+    }
+
+    public String getGoods_name() {
+        return goods_name;
+    }
+
+    public void setGoods_name(String goods_name) {
+        this.goods_name = goods_name;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 }

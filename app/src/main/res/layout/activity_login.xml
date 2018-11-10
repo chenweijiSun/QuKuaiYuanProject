@@ -1,95 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/theme_color"
-              android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_color"
+    android:orientation="vertical">
 
-    <include layout="@layout/view_toolbar"/>
+    <include layout="@layout/view_toolbar" />
 
     <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#DEDEDE"/>
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#DEDEDE" />
 
     <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="10dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="10dp">
 
         <ImageView
-                android:id="@+id/iv_touxiang"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_centerHorizontal="true"
-                android:src="@mipmap/logo_p"/>
+            android:id="@+id/iv_touxiang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:src="@mipmap/logo_p" />
 
 
         <EditText
-                android:id="@+id/et_phone"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/input_height"
-                android:layout_below="@+id/iv_touxiang"
-                android:layout_marginLeft="@dimen/input_padding"
-                android:layout_marginRight="@dimen/input_padding"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/shape_input_bg"
-                android:gravity="center"
-                android:hint="手机"/>
+            android:id="@+id/et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_height"
+            android:layout_below="@+id/iv_touxiang"
+            android:layout_marginLeft="@dimen/input_padding"
+            android:layout_marginRight="@dimen/input_padding"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/shape_input_bg"
+            android:gravity="center"
+            android:hint="手机" />
 
         <EditText
-                android:id="@+id/et_passowrd"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/input_height"
-                android:layout_below="@+id/et_phone"
-                android:layout_marginLeft="@dimen/input_padding"
-                android:layout_marginRight="@dimen/input_padding"
-                android:layout_marginTop="@dimen/padding_15dp"
-                android:background="@drawable/shape_input_bg"
-                android:gravity="center"
-                android:hint="密码"/>
+            android:id="@+id/et_passowrd"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_height"
+            android:layout_below="@+id/et_phone"
+            android:layout_marginLeft="@dimen/input_padding"
+            android:layout_marginRight="@dimen/input_padding"
+            android:layout_marginTop="@dimen/padding_15dp"
+            android:background="@drawable/shape_input_bg"
+            android:gravity="center"
+            android:hint="密码"
+            android:inputType="textPassword" />
 
         <TextView
-                android:id="@+id/bottom"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="50dp"
-                android:gravity="center"
-                android:text="@string/cont_message"
-                android:textColor="@color/white"
-                android:textSize="10sp"/>
+            android:id="@+id/bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="50dp"
+            android:gravity="center"
+            android:text="@string/cont_message"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
 
         <TextView
-                android:id="@+id/btn_login"
-                android:layout_width="match_parent"
-                android:layout_marginLeft="@dimen/input_padding"
-                android:layout_marginRight="@dimen/input_padding"
-                android:layout_height="@dimen/input_height"
-                android:background="@drawable/shape_btn_bg"
-                android:textColor="@drawable/select_text_click"
-                android:layout_above="@+id/btn_register"
-                android:layout_centerHorizontal="true"
-                android:gravity="center"
-                android:text="登录"
-                android:textSize="16sp"/>
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_height"
+            android:layout_above="@+id/btn_register"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/input_padding"
+            android:layout_marginRight="@dimen/input_padding"
+            android:background="@drawable/shape_btn_bg"
+            android:gravity="center"
+            android:text="登录"
+            android:textColor="@drawable/select_text_click"
+            android:textSize="16sp" />
 
         <TextView
-                android:id="@+id/btn_register"
-                android:layout_width="match_parent"
-                android:layout_marginLeft="@dimen/input_padding"
-                android:layout_marginRight="@dimen/input_padding"
-                android:layout_height="@dimen/input_height"
-                android:background="@drawable/shape_btn_bg"
-                android:textColor="@drawable/select_text_click"
-                android:layout_above="@+id/bottom"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="15dp"
-                android:gravity="center"
-                android:text="注册"
-                android:textSize="16sp"/>
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_height"
+            android:layout_above="@+id/bottom"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="@dimen/input_padding"
+            android:layout_marginRight="@dimen/input_padding"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/shape_btn_bg"
+            android:gravity="center"
+            android:text="注册"
+            android:textColor="@drawable/select_text_click"
+            android:textSize="16sp" />
     </RelativeLayout>
 </LinearLayout>
