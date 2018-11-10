@@ -35,6 +35,9 @@ public class NFCActivity extends ToolBarActivity {
     protected void init() {
         initTitleAndCanBack("NFC扫描");
         NfcUtil nfcUtils = new NfcUtil(this);
+
+
+
         if(BuildConfig.DEBUG){
             btnWrite.setVisibility(View.VISIBLE);
         }else{

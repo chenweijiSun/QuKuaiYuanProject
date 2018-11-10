@@ -2,6 +2,7 @@ package com.nfc.qukuaiyuan.ui;
 
 
 import android.content.Intent;
+import android.nfc.NfcAdapter;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
@@ -19,6 +20,7 @@ import com.nfc.qukuaiyuan.model.entity.UserInfo;
 import com.nfc.qukuaiyuan.ui.nfc.NFCTestActivity;
 import com.nfc.qukuaiyuan.utils.GsonUtil;
 import com.nfc.qukuaiyuan.utils.MD5Util;
+import com.nfc.qukuaiyuan.utils.NfcUtil;
 import com.nfc.qukuaiyuan.utils.jutils.JUtils;
 import okhttp3.Call;
 import org.json.JSONException;
@@ -54,6 +56,11 @@ public class MainActivity extends ToolBarActivity {
         switch (view.getId()) {
             case R.id.iv_nfc:
 //                startActivity(new Intent(this, NFCTestActivity.class));
+                NfcAdapter nfcAdapter = NfcUtil.NfcCheck(this);
+                if(nfcAdapter==null){
+                    showToast("您的手机不支持NFC功能，或者NFC功能已关闭");
+                    return;
+                }
                 startActivity(new Intent(this, NFCActivity.class));
                 break;
             case R.id.iv_erweima:

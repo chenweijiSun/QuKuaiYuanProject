@@ -78,6 +78,7 @@
         <item name="android:windowEnterAnimation">@anim/pop_enter_anim</item>
         <item name="android:windowExitAnimation">@anim/pop_exit_anim</item>
     </style>
+
     <style name="AnimationFadeIn">
         <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
     </style>
@@ -86,6 +87,7 @@
         <item name="android:textColor">@color/cc_text_dark</item>
         <item name="android:textSize">@dimen/text_size_14sp</item>
     </style>
+
     <style name="MyTabLayoutTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textSize">25sp</item>
         <item name="android:textColor">@android:color/white</item>
@@ -100,5 +102,21 @@
         <item name="colorSwitchThumbNormal">#FFF1F1F1</item>
         <item name="android:colorForeground">@color/theme_color</item>
     </style>
+
+
+
+
+    <style name="AppTheme.Full" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.Splash" parent="AppTheme.Full">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
 
 </resources>

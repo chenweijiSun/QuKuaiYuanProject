@@ -16,7 +16,6 @@ android {
                 includeCompileClasspath true
             }
         }
-
     }
     signingConfigs {
         release {
@@ -89,5 +88,7 @@ dependencies {
     implementation 'me.dm7.barcodescanner:zxing:1.9.8'
     //log工具
     implementation 'com.github.zhaokaiqiang.klog:library:1.5.0'
-    implementation 'com.github.orangegangsters:swipy:1.1.0@aar'
+//    api 'com.github.orangegangsters:swipy:1.2.3@aar'
+    //扩展上拉刷新的SwipeRefreshLayout
+    implementation project(':SwipyRefreshLayoutLib')
 }
