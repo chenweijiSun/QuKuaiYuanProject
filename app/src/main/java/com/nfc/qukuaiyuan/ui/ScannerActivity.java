@@ -12,6 +12,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.google.zxing.Result;
+import com.nfc.qukuaiyuan.BuildConfig;
 import com.nfc.qukuaiyuan.R;
 import com.nfc.qukuaiyuan.base.ToolBarActivity;
 import com.nfc.qukuaiyuan.http.HttpClient;
@@ -69,8 +70,10 @@ public class ScannerActivity extends ToolBarActivity implements ZXingScannerView
     @Override
     protected void onResume() {
         super.onResume();
+        btnSwitch.setChecked(false);
         mScannerView.setResultHandler(this);
         mScannerView.startCamera();
+
     }
 
     @Override
@@ -81,7 +84,9 @@ public class ScannerActivity extends ToolBarActivity implements ZXingScannerView
 
     @Override
     public void handleResult(Result result) {
-        showToast(result.getText() + "==" + result.getBarcodeFormat().toString());
+        if(BuildConfig.DEBUG){
+            showToast(result.getText() + "==" + result.getBarcodeFormat().toString());
+        }
         // If you would like to resume scanning, call this method below:
         mScannerView.resumeCameraPreview(this);
 
