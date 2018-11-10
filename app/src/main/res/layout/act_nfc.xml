@@ -20,7 +20,6 @@
             android:id="@+id/btn_write"
             android:layout_width="wrap_content"
             android:text="写入数据"
-            android:visibility="gone"
             android:layout_height="wrap_content" />
 
         <LinearLayout

@@ -41,6 +41,8 @@ import com.nfc.qukuaiyuan.model.entity.QueryRecordInfo;
 import com.nfc.qukuaiyuan.utils.MD5Util;
 import com.nfc.qukuaiyuan.utils.jutils.JUtils;
 
+import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
+import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayoutDirection;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -59,10 +61,11 @@ public class QueryRecordActivity extends ToolBarActivity {
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
     @Bind(R.id.swipeRefreshLayout)
-    PullRefreshLayout swipeRefreshLayout;
+    SwipyRefreshLayout swipeRefreshLayout;
 
     private QueryRecordAdapter adapter;
     private Gson mGson;
+    private int pageStart=0;
 
     @Override
     protected int getLayoutResId() {
@@ -81,6 +84,32 @@ public class QueryRecordActivity extends ToolBarActivity {
         recyclerView.addItemDecoration(new DividerItemDecoration(this,
                 DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(adapter);
+        swipeRefreshLayout.setDirection(SwipyRefreshLayoutDirection.BOTH);
+        swipeRefreshLayout.setOnRefreshListener(new SwipyRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh(SwipyRefreshLayoutDirection direction) {
+                if(direction==SwipyRefreshLayoutDirection.TOP){
+
+                    adapter.clear();
+                    pageStart=0;
+                    try {
+                        doQuery(null,null);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }else if(direction==SwipyRefreshLayoutDirection.BOTTOM){
+                    try {
+                        pageStart++;
+                        doQuery(null,null);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
+
         try {
             doQuery(null, null);
         } catch (JSONException e) {
@@ -94,6 +123,8 @@ public class QueryRecordActivity extends ToolBarActivity {
         object.put("act", "nfc.user_select");
         object.put("appid", Constant.APP_ID);
         object.put("code", code);
+        object.put("page_on",pageStart);
+        object.put("page_size",20);
         object.put("sessionkey", Constant.SESSION_KEY);
         object.put("time", System.currentTimeMillis());
         object.put("token", BaseApplication.getInstance().getUserToken());
@@ -106,16 +137,22 @@ public class QueryRecordActivity extends ToolBarActivity {
             public void onFailure(Call call, Exception e) {
                 hideProgressDialog();
                 showToast("查询失败");
+                swipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
             public void onResponse(String response) {
+                swipeRefreshLayout.setRefreshing(false);
                 hideProgressDialog();
                 String result = checkSuccess(response);
                 JUtils.Log("cwj", result);
                 if (result != null) {
-                    List<QueryRecordInfo> list = fromJsonList(result, QueryRecordInfo.class);
-                    adapter.addMoreData(list);
+                    try {
+                        List<QueryRecordInfo> list = fromJsonList(result, QueryRecordInfo.class);
+                        adapter.addMoreData(list);
+                    } catch (Exception e) {
+                        showToast("加载失败");
+                    }
 
                 } else {
                     showToast("查询失败");

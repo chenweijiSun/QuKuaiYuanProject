@@ -98,7 +98,7 @@
         android:layout_height="0.5dp"
         android:background="@color/westore_line_bg" />
 
-    <com.baoyz.widget.PullRefreshLayout
+    <com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -108,7 +108,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-    </com.baoyz.widget.PullRefreshLayout>
+    </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
 
 
 </LinearLayout>
