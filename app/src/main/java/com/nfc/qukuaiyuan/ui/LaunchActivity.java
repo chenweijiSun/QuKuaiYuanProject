@@ -21,7 +21,6 @@ import qiu.niorgai.StatusBarCompat;
  */
 public class LaunchActivity extends BaseActivity implements View.OnClickListener{
     private static final int sleepTime = 3000;
-    private RxPermissions permissions;
 
     @Override
     protected int getLayoutResId() {
@@ -31,35 +30,46 @@ public class LaunchActivity extends BaseActivity implements View.OnClickListener
     @Override
     protected void init() {
         StatusBarCompat.translucentStatusBar(this);
-        permissions = RxPermissions.getInstance(this);
-        mHandler.sendEmptyMessageDelayed(0,sleepTime);
-
-    }
-
-
-    @SuppressLint("HandlerLeak")
-    private Handler mHandler = new Handler() {
-        public void handleMessage(Message msg) {
-            if(msg.what==0){
+        Integer time = 2000;    //设置等待时间，单位为毫秒
+        Handler handler = new Handler();
+        //当计时结束时，跳转至主界面
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
                 startActivity(new Intent(LaunchActivity.this, MainActivity.class));
                 finish();
                 overridePendingTransition(0,0);
-            }else if(msg.what==1){
-                startActivity(new Intent(LaunchActivity.this, LoginActivity.class));
-                finish();
-                overridePendingTransition(0,0);
-            }else if(msg.what==2){
 
             }
-        };
-    };
+        }, time);
+//        mHandler.sendEmptyMessageDelayed(0,sleepTime);
+
+    }
+
+//
+//    @SuppressLint("HandlerLeak")
+//    private Handler mHandler = new Handler() {
+//        public void handleMessage(Message msg) {
+//            if(msg.what==0){
+//                startActivity(new Intent(LaunchActivity.this, MainActivity.class));
+//                finish();
+//                overridePendingTransition(0,0);
+//            }else if(msg.what==1){
+//                startActivity(new Intent(LaunchActivity.this, LoginActivity.class));
+//                finish();
+//                overridePendingTransition(0,0);
+//            }else if(msg.what==2){
+//
+//            }
+//        };
+//    };
 
     @Override
     public void onClick(View view) {
         home();
     }
     public void home(){
-        mHandler.removeMessages(0);
+//        mHandler.removeMessages(0);
         JUtils.getSharedPreference().putBoolean(Constant.FIRST_LAUNCH,true);
         startActivity(new Intent(this, MainActivity.class));
         finish();
@@ -70,7 +80,7 @@ public class LaunchActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     protected void onDestroy() {
-        mHandler.removeMessages(0);
+//        mHandler.removeMessages(0);
         super.onDestroy();
     }
 }
