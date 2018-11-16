@@ -22,15 +22,23 @@
  */
 package com.nfc.qukuaiyuan.ui;
 
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.widget.TextView;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import com.nfc.qukuaiyuan.R;
 import com.nfc.qukuaiyuan.base.ToolBarActivity;
+import com.nfc.qukuaiyuan.utils.jutils.JUtils;
 
 /**
- *
  * @author chenweiji
  * @version Id: AboutUsActivity.java, v 0.1 2018/11/8 16:29 chenweiji Exp $$
  */
 public class AboutUsActivity extends ToolBarActivity {
+    @Bind(R.id.tv_version)
+    TextView tvVersion;
+
     @Override
     protected int getLayoutResId() {
         return R.layout.act_about_us;
@@ -39,6 +47,11 @@ public class AboutUsActivity extends ToolBarActivity {
     @Override
     protected void init() {
         initTitleAndCanBack("关于我们");
-
+        String versionName = JUtils.getAppVersionName();
+        if(!TextUtils.isEmpty(versionName)){
+            tvVersion.setText("版本号："+versionName);
+        }
     }
+
+
 }
