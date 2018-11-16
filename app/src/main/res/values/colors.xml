@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="theme_color">#FB984A</color>
+    <color name="theme_color">#FF9000</color>
     <color name="home_notice_background_color">#2c63db</color>
     <color name="colorAccent">#ffffff</color>
 
