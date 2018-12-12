@@ -76,7 +76,12 @@ public class ScanResultActivity extends ToolBarActivity {
             if (code != null) {
                 doQueryCode(code);
             } else if (uid != null) {
-                doQueryUid(uid);
+                //判断是否是链接
+                if(uid.startsWith("http")){
+                    webView.loadUrl(uid);
+                }else{
+                    doQueryUid(uid);
+                }
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -100,6 +105,7 @@ public class ScanResultActivity extends ToolBarActivity {
             @Override
             public void onFailure(Call call, Exception e) {
                 hideProgressDialog();
+                JUtils.Log("cwj", e.getMessage());
                 showToast("查询失败");
             }
 
