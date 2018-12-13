@@ -19,6 +19,7 @@ import com.nfc.qukuaiyuan.utils.NfcUtil;
 import com.nfc.qukuaiyuan.utils.jutils.JUtils;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Arrays;
 
 import butterknife.Bind;
@@ -70,12 +71,17 @@ public class NFCActivity extends ToolBarActivity {
         //当该Activity接收到NFC标签时，运行该方法
         //调用工具方法，读取NFC数据
         try {
-            String str = NfcUtil.readNfcTag(intent);
+//            String str = NfcUtil.readNfcTag(intent);
+            String str = NfcUtil.readNFCFromTag(intent);
+            if(BuildConfig.DEBUG){
+                tv_uid_base64.setText("读取的内容为:"+str);
+            }
             JUtils.Log("cwj", "NFC-->" + str);
-            String uid = resolveIntent(intent);
-            JUtils.Log("cwj", "UID-->" + uid);
+//            String uid = resolveIntent(intent);
+//            JUtils.Log("cwj", "UID-->" + uid);
             Intent intent1 = new Intent(this, ScanResultActivity.class);
-            intent1.putExtra("uid", str);
+            String encode = URLEncoder.encode(str, "utf-8");
+            intent1.putExtra("uid", encode);
             startActivity(intent1);
         } catch (Exception e) {
             e.printStackTrace();

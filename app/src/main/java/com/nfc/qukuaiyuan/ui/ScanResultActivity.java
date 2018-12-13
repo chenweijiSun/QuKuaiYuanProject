@@ -46,9 +46,13 @@ import com.nfc.qukuaiyuan.http.okhttp.CallBackUtil;
 import com.nfc.qukuaiyuan.http.okhttp.OkhttpUtil;
 import com.nfc.qukuaiyuan.utils.MD5Util;
 import com.nfc.qukuaiyuan.utils.jutils.JUtils;
+import com.nfc.qukuaiyuan.widget.dialog.DialogFragmentHelper;
+
 import okhttp3.Call;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.net.URLDecoder;
 
 /**
  * @author chenweiji
@@ -77,15 +81,32 @@ public class ScanResultActivity extends ToolBarActivity {
                 doQueryCode(code);
             } else if (uid != null) {
                 //判断是否是链接
-                if(uid.startsWith("http")){
-                    webView.loadUrl(uid);
-                }else{
-                    doQueryUid(uid);
+//                if(uid.startsWith("http")){
+//                    webView.loadUrl(uid);
+//                }else{
+//                    doQueryUid(uid);
+//                }
+                String decode = URLDecoder.decode(uid, "utf-8");
+                //判断是否是zh开头
+                if(decode.startsWith("zh")){
+                    decode=decode.substring(2);
                 }
+                DialogFragmentHelper.showTips(getSupportFragmentManager(),"读取出内容为："+decode);
+                webView.loadUrl(decode);
+
             }
-        } catch (JSONException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+        String decode = "zhhttp://fwsy.aibanmas.com/api/Code/?code=8723fl78ugRV3yBzoM6q12LMi1T2h8dB39FEUpdES";
+        //判断是否是zh开头
+        if(decode.startsWith("zh")){
+            decode=decode.substring(2);
+        }
+        System.out.println(decode);
     }
 
 

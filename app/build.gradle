@@ -7,8 +7,8 @@ android {
         applicationId "com.nfc.qukuaiyuan"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 11
-        versionName "0.0.5"
+        versionCode 16
+        versionName "1.0.0"
 
         javaCompileOptions {
             // 显式声明支持注解
