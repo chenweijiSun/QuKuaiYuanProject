@@ -91,7 +91,7 @@ public class ScanResultActivity extends ToolBarActivity {
                 if(decode.startsWith("zh")){
                     decode=decode.substring(2);
                 }
-                DialogFragmentHelper.showTips(getSupportFragmentManager(),"读取出内容为："+decode);
+//                DialogFragmentHelper.showTips(getSupportFragmentManager(),"读取出内容为："+decode);
                 webView.loadUrl(decode);
 
             }
